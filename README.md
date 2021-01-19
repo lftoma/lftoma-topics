@@ -27,7 +27,17 @@ Best of luck
 
 ## Dev Notes
 
-- Leave any technical notes on any libraries or tools you chose to use, the more detail the better.
+- For this project, following dependencies where added (a part from CRA dependencies for bootstraping the project):
+
+  1. @apollo/client
+  2. graphql
+  3. styled-components
+  4. react-router
+
+- I didn't added any other as I wanted to focus on problem solving.
+- I think that jest/react-testing-library is the best combination for testing React applications.
+- React router is providing Client Side Routing very convenient for adding new features.
+- Netlify file added is for server side routing all calls to index and serve our React App.
 
 ### How to run app & test
 
