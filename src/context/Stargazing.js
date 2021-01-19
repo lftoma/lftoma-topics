@@ -7,10 +7,10 @@ const StarGazingContext = createContext();
 
 export const useStarGazingContext = () => useContext(StarGazingContext);
 
-export const StarGazingConsumer = ({ children, initialTopic = "react" }) => {
-  const [topicRelated, setTopicRelated] = useState(initialTopic);
+export const StarGazingConsumer = ({ children }) => {
+  const [topicRelated, setTopicRelated] = useState("react");
   const { loading, error, data } = useQuery(GET_STAR_GAZERS_COUNT, {
-    variables: { topicRelated },
+    variables: { topicRelated: topicRelated },
   });
   const [activeStargazer, setActiveStargazer] = useState("NOT_SELECTED");
   return (

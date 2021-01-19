@@ -49,7 +49,8 @@ export const TopicStargazingPanel = () => {
   const { topic } = useParams();
 
   useEffect(() => {
-    setTopicRelated(topic);
+    debugger;
+    if (topic) setTopicRelated(topic);
   }, [topic, setTopicRelated]);
 
   const getContent = () => {

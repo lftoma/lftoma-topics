@@ -3,22 +3,24 @@ import { MockedProvider } from "@apollo/client/testing";
 import { ThemeProvider } from "styled-components";
 import { createMemoryHistory } from "history";
 
-import { TopicStargazingPanel } from "../components/TopicStargazingPanel";
 import { StarGazingConsumer } from "../context/Stargazing";
 import { MainTheme } from "../theme/theme";
 import { GET_STAR_GAZERS_COUNT } from "../gql/querys";
 import { Router } from "react-router-dom";
+import Stargazers from "../pages/Stargazers";
 
 const mockedResults = {
   failingFetch: {
     request: {
       query: GET_STAR_GAZERS_COUNT,
+      variables: { topicRelated: "react" },
     },
     error: new Error("An error occurred on GQL Server"),
   },
   successFetch: {
     request: {
       query: GET_STAR_GAZERS_COUNT,
+      variables: { topicRelated: "react" },
     },
     result: {
       data: {
@@ -43,7 +45,7 @@ const TestingWrapper = ({ resultToMock }) => (
     <MockedProvider mocks={[resultToMock]}>
       <ThemeProvider theme={MainTheme}>
         <StarGazingConsumer>
-          <TopicStargazingPanel />
+          <Stargazers />
         </StarGazingConsumer>
       </ThemeProvider>
     </MockedProvider>

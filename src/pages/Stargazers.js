@@ -6,6 +6,9 @@ function Stargazers() {
   return (
     <StarsBG>
       <Switch>
+        <Route path="/" exact>
+          <TopicStargazingPanel />
+        </Route>
         <Route path="/:topic">
           <TopicStargazingPanel />
         </Route>
