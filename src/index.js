@@ -1,17 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { ApolloProvider } from "@apollo/client";
+import { ThemeProvider } from "styled-components";
+import { BrowserRouter as Router } from "react-router-dom";
+
+import Stargazers from "./pages/Stargazers";
+import { MainTheme, GlobalStyles } from "./theme/theme";
+import reportWebVitals from "./utilities/reportWebVitals";
+import { client } from "./gql/client";
+import { StarGazingConsumer } from "./context/Stargazing";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <ApolloProvider client={client}>
+        <StarGazingConsumer>
+          <ThemeProvider theme={MainTheme}>
+            <GlobalStyles />
+            <Stargazers />
+          </ThemeProvider>
+        </StarGazingConsumer>
+      </ApolloProvider>
+    </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+console.log(
+  "Dear evaluation team, please find some useful information about the application in this log: "
+);
+reportWebVitals(console.log);
